@@ -9,28 +9,29 @@ Elemento *criaLista(){
 Elemento *addInicio(Elemento *l){
     //criar novo elemento
     Elemento *novo = (Elemento*) malloc(sizeof(Elemento));
+    scanf("%d", &novo->info);
     if(l == NULL){
         l = novo;
         novo->prox = l;
     }else{
-        novo->prox = l->prox;
-        scanf("%d", &novo->info);
+        novo->prox = l->prox;    
     }
     //ajustar o valor do ponteiro para o prox elemento
     
     return novo;
 }
+
 void mostrarLista(Elemento *l){
-    if (l == NULL)
-        printf("Lista vazia ");
-    else{
-        Elemento *aux = l;
-        while (aux != NULL)
-        {
-            printf("%d -> ", aux->info);
-            aux = aux->prox;
-        }
-    }
+    
+    Elemento *aux = l;
+
+    do
+    {
+        printf('%d -> ', aux->info);
+        aux = aux->prox;
+    } while (aux != l->prox);
+    
+    
 }
 
 
@@ -38,15 +39,13 @@ void addFinal(Elemento *l){
     Elemento *novo = (Elemento*) malloc(sizeof(Elemento));
     scanf("%d", &novo->info);
     novo->prox = NULL;
-    if (l == NULL)
+    if (l == NULL){
         l = novo;
-    else{
-        Elemento *aux = l;
-        while (aux->prox != NULL)
-        {
-            aux = aux->prox;
-        }
-        aux->prox = novo;
+        novo->prox = l;
+    }else{
+        novo->prox = l->prox;
+        l->prox = novo;
+        l=novo;
     }
 }
 

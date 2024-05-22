@@ -57,39 +57,6 @@ void addFinal(Elemento *l)
     }
 }
 
-// Elemento *addOrdeandoCrescente(Elemento *l)
-// {
-//     Elemento *novo = (Elemento *)malloc(sizeof(Elemento));
-//     scanf("%d", &novo->info);
-
-//     if (l == NULL)
-//     {
-//         novo->prox = novo;
-//         return novo;
-//     }
-//     else if (novo->info < l->prox->info)
-//     {
-//         novo->prox = l->prox;
-//         l->prox = novo;
-//         return l;
-//     }
-//     else
-//     {
-//         Elemento *atual = l->prox;
-//         while (atual != l && atual->prox->info < novo->info)
-//         {
-//             atual = atual->prox;
-//         }
-//         novo->prox = atual->prox;
-//         atual->prox = novo;
-//         if (atual == l)
-//         {
-//             l = novo;
-//         }
-//         return l;
-//     }
-// }
-
 Elemento *addOrdeandoCrescente(Elemento *l)
 {
     Elemento *novo = (Elemento *)malloc(sizeof(Elemento));
@@ -100,7 +67,7 @@ Elemento *addOrdeandoCrescente(Elemento *l)
         novo->prox = novo;
         return novo;
     }
-    else if (novo->info < l->prox->info)
+    else if (novo->info < l->info)
     {
         novo->prox = l->prox;
         l->prox = novo;

@@ -9,9 +9,15 @@ Elemento *criaLista(){
 Elemento *addInicio(Elemento *l){
     //criar novo elemento
     Elemento *novo = (Elemento*) malloc(sizeof(Elemento));
+    if(l == NULL){
+        l = novo;
+        novo->prox = l;
+    }else{
+        novo->prox = l->prox;
+        scanf("%d", &novo->info);
+    }
     //ajustar o valor do ponteiro para o prox elemento
-    novo->prox = l;
-    scanf("%d", &novo->info);
+    
     return novo;
 }
 void mostrarLista(Elemento *l){

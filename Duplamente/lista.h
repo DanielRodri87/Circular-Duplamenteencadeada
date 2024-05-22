@@ -1,6 +1,7 @@
 typedef struct elemento{
     int info;
     struct  elemento *prox;
+    struct elemento *ant;
 }Elemento;
 
 Elemento *criaLista();

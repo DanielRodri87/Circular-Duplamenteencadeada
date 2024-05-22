@@ -11,9 +11,14 @@ Elemento *addInicio(Elemento *l){
     Elemento *novo = (Elemento*) malloc(sizeof(Elemento));
     //ajustar o valor do ponteiro para o prox elemento
     novo->prox = l;
+    novo->ant = NULL;
+    if (l != NULL){
+        l->ant=novo;
+    }
     scanf("%d", &novo->info);
     return novo;
 }
+
 void mostrarLista(Elemento *l){
     if (l == NULL)
         printf("Lista vazia ");

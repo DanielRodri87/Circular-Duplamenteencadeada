@@ -38,7 +38,10 @@ void addFinal(Elemento *l){
     scanf("%d", &novo->info);
     novo->prox = NULL;
     if (l == NULL)
+    {
         l = novo;
+        novo->ant = NULL;
+    }
     else{
         Elemento *aux = l;
         while (aux->prox != NULL)
@@ -46,6 +49,7 @@ void addFinal(Elemento *l){
             aux = aux->prox;
         }
         aux->prox = novo;
+        novo->ant = aux;
     }
 }
 

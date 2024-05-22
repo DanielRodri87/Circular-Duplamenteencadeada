@@ -109,7 +109,7 @@ Elemento *addOrdeandoCrescente(Elemento *l)
     else
     {
         Elemento *atual = l->prox;
-        while (atual != l && atual->prox->info < novo->prox->info)
+        while (atual != l && atual->prox->info < novo->info)
         {
             atual = atual->prox;
         }

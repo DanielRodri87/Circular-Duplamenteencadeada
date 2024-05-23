@@ -41,21 +41,19 @@ void mostrarListaInverso(Elemento *l)
     else
     {
         Elemento *aux = l;
-        while (aux != NULL)
+        while (aux->prox != NULL)
         {
             aux = aux->prox;
         }
-
-        Elemento *fim = aux->prox;
-        while(fim != l)
+        while (aux != NULL)
         {
-            printf("%d ", fim->info);
-            fim = fim->ant;
+            printf("%d ", aux->info);
+            aux = aux->ant;
         }
-
     }
 }
 
+// daniel, faça
 void addFinal(Elemento *l){
     Elemento *novo = (Elemento*) malloc(sizeof(Elemento));
     scanf("%d", &novo->info);
@@ -76,64 +74,96 @@ void addFinal(Elemento *l){
     }
 }
 
-Elemento *addOrdeandoCrescente(Elemento *l)
-{
-    Elemento *novo = (Elemento*) malloc(sizeof(Elemento));
-    scanf("%d", &novo->info);
-    if (l == NULL)
+Elemento *addOrdeandoCrescente(Elemento *l) {
+    Elemento *novo = (Elemento *) malloc(sizeof(Elemento));
+    if (!novo)
     {
-        novo->prox = NULL;
-        return novo;
+        printf("erro ao alocar memoria.\n");
+        return l;
     }
+
+    scanf("%d", &novo->info);
+    novo->prox = NULL;
+    novo->ant = NULL;
+
+    if (l == NULL)  
+        return novo;
     else
     {
-        Elemento *ant = NULL;
         Elemento *atual = l;
+        Elemento *anterior = NULL;
+
         while (atual != NULL && atual->info < novo->info)
         {
-            ant = atual;
+            anterior = atual;
             atual = atual->prox;
         }
-        if (ant == NULL)
-        {
+
+        if (anterior == NULL)
+        { 
             novo->prox = l;
+            l->ant = novo;
             return novo;
-        }
-        else
-        {
-            novo->prox = ant->prox;
-            ant->prox = novo;
+        } else
+        { 
+            novo->prox = atual;
+            novo->ant = anterior;
+            anterior->prox = novo;
+            if (atual != NULL) {
+                atual->ant = novo;
+            }
             return l;
         }
     }
 }
 
+
 Elemento *removerElemento(Elemento *l)
 {
+    Elemento *aux = l;
     int valor;
+    printf("Digite o valor a ser removido: ");
     scanf("%d", &valor);
-    Elemento *ant = NULL;
-    Elemento *atual = l;
-    while (atual != NULL && atual->info != valor)
+
+    if (l == NULL)
     {
-        ant = atual;
-        atual = atual->prox;
-    }
-    if (atual == NULL)
-    {
-        printf("Elemento nao encontrado\n");
+        printf("Lista vazia\n");
         return l;
-    }
-    if (ant == NULL)
-    {
-        l = atual->prox;
     }
     else
     {
-        ant->prox = atual->prox;
+        while (aux != NULL && aux->info != valor)
+        {
+            aux = aux->prox;
+        }
+
+        if (aux == NULL)
+        {
+            printf("Elemento não encontrado\n");
+            return l;
+        }
+        else
+        {
+            if (aux->ant == NULL)
+            {
+                l = aux->prox;
+                if (l != NULL)
+                {
+                    l->ant = NULL;
+                }
+            }
+            else
+            {
+                aux->ant->prox = aux->prox;
+                if (aux->prox != NULL)
+                {
+                    aux->prox->ant = aux->ant;
+                }
+            }
+            free(aux);
+            return l;
+        }
     }
-    free(atual);
-    return l;
 }
 
 int tamanhoDaLista(Elemento *l)

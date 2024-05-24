@@ -40,20 +40,26 @@ void mostrarLista(Elemento *l)
     printf("\n");
 }
 
-void addFinal(Elemento *l)
+void addFinal(Elemento **l)
 {
     Elemento *novo = (Elemento *)malloc(sizeof(Elemento));
     scanf("%d", &novo->info);
-    novo->prox = NULL;
-    if (l == NULL)
+
+    if (*l == NULL)
     {
-        l = novo;
-        novo->prox = l;
+        novo->prox = novo;
+        *l = novo;
     }
     else
     {
-        novo->prox = l->prox;
-        l->prox = novo;
+        Elemento *aux = (*l)->prox;
+        while (aux->prox != (*l)->prox)
+        {
+            aux = aux->prox;
+        }
+        novo->prox = (*l)->prox;
+        aux->prox = novo;
+        *l = novo; 
     }
 }
 

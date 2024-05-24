@@ -6,7 +6,7 @@ typedef struct elemento{
 
 Elemento *criaLista();
 Elemento *addInicio(Elemento *l);
-void addFinal(Elemento *l);
+Elemento addFinal(Elemento *l);
 Elemento *addOrdeandoCrescente(Elemento *l);
 Elemento *removerElemento(Elemento *l);
 int tamanhoDaLista(Elemento *l);

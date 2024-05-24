@@ -10,7 +10,7 @@ int main(){
     lista_ord = criaLista();
     lista = criaLista();
 
-    printf("Elementos da lista não ordenada: \n");
+    printf("Elementos da lista nao ordenada: \n");
     lista = addInicio(lista);
     lista = addInicio(lista);
     lista = addInicio(lista);
@@ -27,23 +27,28 @@ int main(){
     lista_ord = addOrdeandoCrescente(lista_ord);
     lista_ord = addOrdeandoCrescente(lista_ord);
     lista_ord = addOrdeandoCrescente(lista_ord);
-    printf("Mostrar lista norma: \n");
+    printf("\nMostrar lista norma: \n");
     mostrarLista(lista_ord);
-    printf("Mostrar lista inversa: \n");
+    printf("\nMostrar lista inversa: \n");
     mostrarListaInverso(lista_ord);
 
-    // mostrarLista(lista_ord);
-    printf("Remover elemento normal\n");
+    int op;
+    printf("\n1 - Remover Elemento Lista\n2 - Remover Elemento Lista Ordenada\n");
+    scanf("%d", &op);
 
-    lista = removerElemento(lista);
+    if (op == 1){
+        printf("Remover elemento normal\n");
+        lista = removerElemento(lista);
 
-    printf("\n");
-    mostrarListaInverso(lista);
+        mostrarLista(lista);
+    } else {
+        printf("Remover elemento ordenado\n");
+        lista_ord = removerElemento(lista_ord);
+        mostrarLista(lista_ord);
+    }
 
-    mostrarLista(lista);
-
-    // printf("\n%d\n", tamanhoDaLista(lista));
-    // printf("\n%d\n", tamanhoDaLista(lista_ord));
+    printf("\nO tamanho da lista nao ordenada eh: %d\n", tamanhoDaLista(lista));
+    printf("\nO tamanho da lista ordenada eh: %d\n", tamanhoDaLista(lista_ord));
 
     return 0;
 }

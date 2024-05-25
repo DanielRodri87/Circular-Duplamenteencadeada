@@ -55,14 +55,13 @@ void mostrarListaInverso(Elemento *l) {
         return;
     }
 
-    Elemento *ultimo = l->ant;
-
-    Elemento *aux = ultimo;
+    Elemento *aux = l->ant;
     do {
         printf("%d ", aux->info);
         aux = aux->ant;
-    } while (aux != ultimo);
-    printf("%d\n", ultimo->info); 
+    } while (aux != l->ant);
+    printf("\n");
+
 }
 
 

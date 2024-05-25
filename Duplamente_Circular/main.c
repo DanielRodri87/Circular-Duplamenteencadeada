@@ -21,20 +21,21 @@ int main()
     printf("\nLista normal\n");
     mostrarLista(lista);
 
+    printf("\nMostrar lista inversa\n");
+    mostrarListaInverso(lista);
+
     printf("\nElementos da lista ordenada: \n");
     lista_ord = addOrdeandoCrescente(lista_ord);
     lista_ord = addOrdeandoCrescente(lista_ord);
     lista_ord = addOrdeandoCrescente(lista_ord);
     lista_ord = addOrdeandoCrescente(lista_ord);
+
+    
     printf("\nMostrar lista ordenada: \n");
     mostrarLista(lista_ord);
 
-    
-    // printf("\nMostrar lista inversa\n");
-    // mostrarListaInverso(lista);
-
-    // printf("\nMostrar lista ordenada inversa\n");
-    // mostrarListaInverso(lista_ord);
+    printf("\nMostrar lista ordenada inversa\n");
+    mostrarListaInverso(lista_ord);
 
     int op;
     printf("\n1 - Remover Elemento Lista\n2 - Remover Elemento Lista Ordenada\n");
@@ -47,12 +48,15 @@ int main()
 
         mostrarLista(lista);
     }
-    else
+    else if (op == 2)
     {
         printf("Remover elemento ordenado\n");
         lista_ord = removerElemento(lista_ord);
         mostrarLista(lista_ord);
     
+    }
+    else {
+        printf("Opcao invalida\n");
     }
 
     printf("\nO tamanho da lista nao ordenada eh: %d\n", tamanhoDaLista(lista));

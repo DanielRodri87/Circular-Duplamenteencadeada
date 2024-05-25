@@ -117,7 +117,6 @@ Elemento *addOrdeandoCrescente(Elemento *l) {
     }
 }
 
-
 Elemento *removerElemento(Elemento *l)
 {
     Elemento *aux = l;

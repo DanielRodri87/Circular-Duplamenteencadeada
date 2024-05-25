@@ -11,3 +11,4 @@ Elemento *addOrdeandoCrescente(Elemento *l);
 Elemento *removerElemento(Elemento *l);
 int tamanhoDaLista(Elemento *l);
 void mostrarLista(Elemento *l);
+void mostrarListaInverso(Elemento *l);

@@ -154,16 +154,18 @@ Elemento *removerElemento(Elemento *l) {
         return l;
     }
 }
-int tamanhoDaLista(Elemento *l)
-{
-    int count = 0;
-    Elemento *aux = l;
-    while (aux != NULL)
-    {
-        count++;
-        aux = aux->prox;
+
+int tamanhoDaLista(Elemento *l) {
+    if (l == NULL) {
+        return 0;
     }
 
+    int count = 0;
+    Elemento *aux = l;
+    do {
+        count++;
+        aux = aux->prox;
+    } while (aux != l);
+
     return count;
-    
 }

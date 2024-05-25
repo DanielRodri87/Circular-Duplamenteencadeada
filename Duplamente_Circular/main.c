@@ -52,6 +52,7 @@ int main()
         printf("Remover elemento ordenado\n");
         lista_ord = removerElemento(lista_ord);
         mostrarLista(lista_ord);
+    
     }
 
     printf("\nO tamanho da lista nao ordenada eh: %d\n", tamanhoDaLista(lista));

@@ -55,10 +55,6 @@ void mostrarListaInverso(Elemento *l)
 
 void addFinal(Elemento **l) {
     Elemento *novo = (Elemento*) malloc(sizeof(Elemento));
-    if (!novo) {
-        printf("Memory allocation failed");
-        return;
-    }
     scanf("%d", &novo->info);
 
     if (*l == NULL) {

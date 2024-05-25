@@ -29,6 +29,13 @@ int main()
     printf("\nMostrar lista ordenada: \n");
     mostrarLista(lista_ord);
 
+    
+    printf("\nMostrar lista inversa\n");
+    mostrarListaInverso(lista);
+
+    printf("\nMostrar lista ordenada inversa\n");
+    mostrarListaInverso(lista_ord);
+
     int op;
     printf("\n1 - Remover Elemento Lista\n2 - Remover Elemento Lista Ordenada\n");
     scanf("%d", &op);

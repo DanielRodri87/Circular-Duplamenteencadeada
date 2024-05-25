@@ -19,39 +19,37 @@ Elemento *addInicio(Elemento *l){
     return novo;
 }
 
-void mostrarLista(Elemento *l)
-{
-    if (l == NULL)
-        printf("Lista vazia ");
-    else
-    {
-        Elemento *aux = l;
-        while (aux != NULL)
-        {
-            printf("%d ", aux->info);
-            aux = aux->prox;
-        }
+void mostrarLista(Elemento *l) {
+    if (l == NULL) {
+        printf("Lista vazia\n");
+        return;
     }
+
+    Elemento *aux = l;
+    do {
+        printf("%d ", aux->info);
+        aux = aux->prox;
+    } while (aux != l);
+    printf("\n");
 }
 
-void mostrarListaInverso(Elemento *l)
-{
-    if (l == NULL)
-        printf("Lista vazia");
-    else
-    {
-        Elemento *aux = l;
-        while (aux->prox != NULL)
-        {
-            aux = aux->prox;
-        }
-        while (aux != NULL)
-        {
-            printf("%d ", aux->info);
-            aux = aux->ant;
-        }
+void mostrarListaInverso(Elemento *l) {
+    if (l == NULL) {
+        printf("Lista vazia\n");
+        return;
     }
+
+    Elemento *ultimo = l->ant;
+
+    Elemento *aux = ultimo;
+    do {
+        printf("%d ", aux->info);
+        aux = aux->ant;
+    } while (aux != ultimo);
+    printf("%d\n", ultimo->info); 
 }
+
+
 
 void addFinal(Elemento **l) {
     Elemento *novo = (Elemento*) malloc(sizeof(Elemento));

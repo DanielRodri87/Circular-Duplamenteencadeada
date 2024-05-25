@@ -6,31 +6,47 @@ Elemento *criaLista(){
     return NULL;
 }
 
-Elemento *addInicio(Elemento *l){
-    //criar novo elemento
-    Elemento *novo = (Elemento*) malloc(sizeof(Elemento));
-    //ajustar o valor do ponteiro para o prox elemento
-    novo->prox = l;
-    novo->ant = NULL;
-    if (l != NULL){
-        l->ant=novo;
-    }
+Elemento *addInicio(Elemento *l)
+{
+
+    Elemento *novo = (Elemento *)malloc(sizeof(Elemento));
+
     scanf("%d", &novo->info);
+    if (l == NULL)
+    {
+        novo->prox = novo;
+        novo->ant = novo;
+        l = novo;
+    }
+    else
+    {
+        Elemento *aux = l->ant;
+
+        novo->prox = l;
+        novo->ant = aux;
+
+        l->ant = novo;
+        aux->prox = novo;
+
+        l = novo;
+    }
+
     return novo;
 }
 
-void mostrarLista(Elemento *l) {
-    if (l == NULL) {
-        printf("Lista vazia\n");
-        return;
+void mostrarLista(Elemento *l)
+{
+    if (l == NULL)
+        printf("Lista vazia ");
+    else
+    {
+        Elemento *aux = l;
+        do
+        {
+            printf("%d ", aux->info);
+            aux = aux->prox;
+        } while (aux != l);
     }
-
-    Elemento *aux = l;
-    do {
-        printf("%d ", aux->info);
-        aux = aux->prox;
-    } while (aux != l);
-    printf("\n");
 }
 
 void mostrarListaInverso(Elemento *l) {
